@@ -88,6 +88,49 @@ const data = [
   }
 ];
 
+const articles = document.querySelector('.articles');
+
+
+function createArticle(title, date, first, second, third){
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const dates = document.createElement('p');
+  const paragraph1 = document.createElement('p');
+  const paragraph2 = document.createElement('p');
+  const paragraph3 = document.createElement('p');
+  const aSpan = document.createElement('span');
+
+  article.appendChild(articleTitle);
+  article.appendChild(dates);
+  article.appendChild(paragraph1);
+  article.appendChild(paragraph2);
+  article.appendChild(paragraph3);
+  article.appendChild(aSpan);
+
+  articleTitle.textContent = title;
+  paragraph1.textContent = first;
+  paragraph2.textContent = second;
+  paragraph3.textContent = third;
+  aSpan.textContent = ' Expand For More Info ↓';
+  dates.textContent = date;
+
+  article.classList.add('article')
+  dates.classList.add('date')
+  aSpan.classList.add('expandButton')
+
+  aSpan.addEventListener('click', () => {
+    article.classList.toggle('article-open')
+  })
+
+  return article;
+}
+console.log(articles)
+
+data.forEach((element) => {
+  const articles = document.querySelector('.articles');
+     articles.appendChild(createArticle(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph));
+  
+  });
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
