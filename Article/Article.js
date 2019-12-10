@@ -108,11 +108,11 @@ function createArticle(title, date, first, second, third){
   article.appendChild(aSpan);
 
   articleTitle.textContent = title;
+  dates.textContent = date;
   paragraph1.textContent = first;
   paragraph2.textContent = second;
   paragraph3.textContent = third;
   aSpan.textContent = ' Expand For More Info ↓';
-  dates.textContent = date;
 
   article.classList.add('article')
   dates.classList.add('date')
