@@ -9,27 +9,6 @@ let menuItems = [
   'Log Out'
 ];
 
-function createMenu(arr){
-  const menu = document.createElement('div');
-  const listItem = document.createElement('ul');
-
-  arr.forEach((listItems) => {
-    const item = document.createElement('li')
-    item.textContent = listItems;
-    listItem.appendChild(item);
-  })
-  menu.appendChild(listItem)
-  menu.classList.add('menu');
-    return menu
-}
-
-let menu = createMenu(menuItems);
-document.querySelector('.header').appendChild(menu);
-let menuButton = document.querySelector('.menu-button');
-
-menuButton.addEventListener('click', (event) => {
-    menu.classList.toggle('menu--open')
-  })
 
 /* 
   Step 1: Write a function that will create a menu component as seen below:
@@ -55,3 +34,55 @@ menuButton.addEventListener('click', (event) => {
   Step 6: add the menu component to the DOM.
   
 */
+
+const header = document.querySelector('.header');
+const menuButton = document.querySelector('.menu-button');
+
+function openMenu(arr){
+  const navDiv = document.createElement('div');
+  const listOfLinks = document.createElement('ul');
+
+  navDiv.appendChild(listOfLinks);
+
+  //create the li's
+  menuItems.forEach((link) => {
+    const item = document.createElement('li');
+    item.textContent = link;
+    listOfLinks.appendChild(item);
+    item.style.cursor = 'pointer';
+  })
+
+  navDiv.classList.add('menu');
+  menuButton.addEventListener('click', (e) => {
+    navDiv.classList.toggle('menu--open');
+  })
+  return navDiv;
+}
+
+header.appendChild(openMenu(menuItems))
+
+
+
+
+
+// function createMenu(arr){
+//   const menu = document.createElement('div');
+//   const listItem = document.createElement('ul');
+
+//   arr.forEach((listItems) => {
+//     const item = document.createElement('li')
+//     item.textContent = listItems;
+//     listItem.appendChild(item);
+//   })
+//   menu.appendChild(listItem)
+//   menu.classList.add('menu');
+//     return menu
+// }
+
+// let menu = createMenu(menuItems);
+// document.querySelector('.header').appendChild(menu);
+// let menuButton = document.querySelector('.menu-button');
+
+// menuButton.addEventListener('click', (event) => {
+//     menu.classList.toggle('menu--open')
+//   })
