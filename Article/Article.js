@@ -144,6 +144,12 @@ function componentCreator(title, date, p1, p2, p3){
     //add the event listener
   expandSpan.addEventListener('click', (e) =>{
     article.classList.toggle('article-open');
+    if (expandSpan.innerHTML != "Close"){
+      expandSpan.innerHTML = "Close";
+    } else {
+      expandSpan.innerHTML = "Click to Expand";
+    }
+    
   });
   return article;
 }
