@@ -85,8 +85,152 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+
+  {
+    title: 'The Best Game',
+    date: 'Dec 10th, 2019',
+    firstParagraph: `I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.`,
+
+    secondParagraph: `I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am GROOT.I am GROOT. `,
+
+    thirdParagraph: `I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am Groot.I am GROOT.I am GROOT. `
+  },
+  {
+    title: 'Star Wars Day',
+    date: 'May 4th, 2009',
+    firstParagraph: `May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. `,
+
+    secondParagraph: `May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. `,
+
+    thirdParagraph: `May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. ` 
   }
 ];
+
+const articles = document.querySelector('.articles');
+console.log(articles)
+
+function componentCreator(title, date, p1, p2, p3){
+  //creating the elements
+  const article = document.createElement('div');
+  const titleContent = document.createElement('h2');
+  const titleDate = document.createElement('p');
+  const para1 = document.createElement('p');
+  const para2 = document.createElement('p');
+  const para3 = document.createElement('p');
+  const expandSpan = document.createElement('span');
+
+  //appending to the article div
+  article.appendChild(titleContent);
+  article.appendChild(titleDate);
+  article.appendChild(para1);
+  article.appendChild(para2);
+  article.appendChild(para3);
+  article.appendChild(expandSpan);
+
+  //add the classes
+  article.classList.add('article');
+  titleDate.classList.add('date');
+  expandSpan.classList.add('expandButton');
+
+  //add our content to the elements we created
+  titleContent.textContent = title;
+  titleDate.textContent = date;
+  para1.textContent = p1;
+  para2.textContent = p2;
+  para3.textContent = p3;
+  expandSpan.textContent = 'Click to Expand';
+  
+    //add the event listener
+  expandSpan.addEventListener('click', (e) =>{
+    article.classList.toggle('article-open');
+    if (expandSpan.innerHTML != "Close"){
+      expandSpan.innerHTML = "Close";
+    } else {
+      expandSpan.innerHTML = "Click to Expand";
+    }
+    
+  });
+  return article;
+}
+
+  data.map((article) => {
+    return articles.appendChild(componentCreator(article.title, article.date, article.firstParagraph, article.secondParagraph, article.thirdParagraph));
+  });
+
+  const additionalArticles = [{
+    title : "My Added Article",
+    date: "December 10, 2019",
+    firstParagraph: `May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. `,
+    secondParagraph: `May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. `,
+    thirdParagraph: `May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. `
+  },
+
+  {
+    title : "My Second Article",
+    date: "December 10, 2019",
+    firstParagraph: `May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. `,
+    secondParagraph: `May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. `,
+    thirdParagraph: `May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. `
+  },
+  {
+    title : "My third Article",
+    date: "December 10, 2019",
+    firstParagraph: `May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. `,
+    secondParagraph: `May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. `,
+    thirdParagraph: `May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. May the Fourth Be With You. `
+  }]
+
+  additionalArticles.map((article) => {
+      return articles.appendChild(componentCreator(article.title, article.date, article.firstParagraph, article.secondParagraph, article.thirdParagraph))
+    })
+
+
+// const articles = document.querySelector('.articles');
+
+
+
+// function createArticle(title, date, first, second, third){
+//   const article = document.createElement('div');
+//   const articleTitle = document.createElement('h2');
+//   const dates = document.createElement('p');
+//   const paragraph1 = document.createElement('p');
+//   const paragraph2 = document.createElement('p');
+//   const paragraph3 = document.createElement('p');
+//   const aSpan = document.createElement('span');
+
+//   article.appendChild(articleTitle);
+//   article.appendChild(dates);
+//   article.appendChild(paragraph1);
+//   article.appendChild(paragraph2);
+//   article.appendChild(paragraph3);
+//   article.appendChild(aSpan);
+
+//   articleTitle.textContent = title;
+//   dates.textContent = date;
+//   paragraph1.textContent = first;
+//   paragraph2.textContent = second;
+//   paragraph3.textContent = third;
+//   aSpan.textContent = ' Expand For More Info ↓';
+
+//   article.classList.add('article')
+//   dates.classList.add('date')
+//   aSpan.classList.add('expandButton')
+
+//   aSpan.addEventListener('click', () => {
+//     article.classList.toggle('article-open')
+//   })
+
+//   return article;
+// }
+// console.log(articles)
+
+// data.forEach((element) => {
+//   const articles = document.querySelector('.articles');
+//      articles.appendChild(createArticle(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph));
+  
+//   });
+
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
